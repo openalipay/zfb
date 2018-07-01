@@ -1,0 +1,81 @@
+<html lang="en" class="mdl-js">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>正在打开支付宝</title>
+    <!-- Add to homescreen -->
+    <link rel="manifest" href="manifest.json">
+    <!-- Fallback to homescreen for Chrome <39 on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Material Design Lite">
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <!-- TODO: Tile icon for Win8 (144x144 + tile color) -->
+    <!-- <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png"> -->
+    <!-- <meta name="msapplication-TileColor" content="#3372DF"> -->
+    <meta name="theme-color" content="#263238">
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!-- <link rel="canonical" href="http://www.example.com/">
+    -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="material.min.css">
+    <script defer src="material.min.js"></script>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+  
+  <body aligh="center">
+    <div align="center" style="padding-top: 20px;">
+      <p>
+        <img src="alipay.png" width="200" height="301">
+      </p>
+
+      <p>
+        <div class="mdl-textfield mdl-js-textfield">
+          <textarea class="mdl-textfield__input" type="text" rows="4" id="contents">支付宝发红包啦！即日起还有机会额外获得余额宝消费红包！长按复制此消息，打开最新版支付宝就能领取！RJp6XI00J9</textarea>
+        </div>
+        <div>
+          <input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onClick="jsCopy();" value="点击复制口令领红包" />
+        </div>
+      </p>
+
+      <!--自动跳转支付宝-->
+      <a id="gogo" href="alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https://qr.alipay.com/c1x02468kcyv9xhoxmfbo22" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">无法跳转请点击我</a>
+      <script src="https://open.mobile.qq.com/sdk/qqapi.js?_bid=152"></script>
+      <script>
+        window.onhashchange = function() {
+          document.getElementById("gogo").click();
+        };
+
+        function hh() {
+          document.getElementById("gogo").click();
+          mqq.ui.openUrl({
+            target: 2,
+            url: "alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https://qr.alipay.com/c1x02758tly1d5ynenwokef"
+          });
+        };
+
+        setTimeout('hh();', 500);
+      </script>
+      <!--自动跳转支付宝-->
+    </div>
+
+    <script type="text/javascript">
+      function jsCopy() {
+        var e = document.getElementById("contents");
+          e.select();
+          tag = document.execCommand("Copy");
+          if (tag) {
+            alert('复制成功，打开支付宝领取红包');
+          }
+        }
+    </script>
+  </body>
+
+</html>
